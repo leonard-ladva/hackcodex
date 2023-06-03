@@ -28,6 +28,25 @@
   color: #61dafb;
 }
 
+.ButtonPage {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+.Button {
+  background: #333;
+  color: white;
+  font-weight: 600;
+  font-size: large;
+  flex-grow: 1;
+  flex-basis: 33.33%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +54,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+@media only screen and (max-width: 600px) {
+  
 }

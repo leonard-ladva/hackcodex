@@ -1,25 +1,23 @@
-import React from 'react';
-import './App.css';
-
+import "./App.css";
+import ButtonPage from "./components/buttonPage/buttonPage";
+import HomePage from "./data";
+import { useState } from "react";
 function App() {
+  const [currentPage, changeState] = useState(HomePage);
+  const [history, setHistory] = useState([]);
+
+  const changePage = (nextPage) => {
+    setHistory(history =>[...history, currentPage]);
+
+    changeState(nextPage);
+
+    console.log(history);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ButtonPage children={currentPage.children} changePage={changePage} />
     </div>
   );
 }
-
 export default App;

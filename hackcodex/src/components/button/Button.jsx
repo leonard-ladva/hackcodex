@@ -21,10 +21,14 @@ const Button = ({ buttonData, changePage, goBack }) => {
     latency: 250,
   });
 
+  
+
   return (
-    <div ref={buttonRef} className="Button">
+    <div ref={buttonRef} className="Button" >
       {buttonData.name}
-      <Say pitch={1.1} rate={1.5} volume={0.8} text={buttonData.name}/>
+      {(
+        <Say pitch={1.1} rate={1.5} volume={0.8} text={} />
+      )}
     </div>
   );
 };

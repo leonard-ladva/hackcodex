@@ -6,6 +6,10 @@
     /* padding: env(safe-area-inset-bottom, 20px); */
 }
 
+window.matchMedia(
+'(display-mode: standalone)'
+).matches
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

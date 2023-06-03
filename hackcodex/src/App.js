@@ -11,7 +11,7 @@ function App() {
 
     changeState(nextPage);
 
-    console.log(history);
+    console.log([...history, currentPage]);
   };
 
   return (

@@ -27,7 +27,7 @@ const Button = ({ buttonData, changePage, goBack }) => {
     <div ref={buttonRef} className="Button" >
       {buttonData.name}
       {(
-        <Say pitch={1.1} rate={1.5} volume={0.8} text={} />
+        <Say pitch={0.3} rate={1.5} volume={0.8} text={buttonData.name} />
       )}
     </div>
   );

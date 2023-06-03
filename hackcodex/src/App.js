@@ -1,15 +1,22 @@
+import { FullScreen } from "@chiragrupani/fullscreen-react";
 import "./App.css";
 import ButtonPage from "./components/buttonPage/buttonPage";
 import HomePage from "./data";
 import { useState } from "react";
+
+
 function App() {
   const [currentPage, changeState] = useState(HomePage);
   const [history, setHistory] = useState([]);
 
   const changePage = (nextPage) => {
-	if (nextPage.children === null || nextPage.children === undefined || nextPage.children.length === 0) {
-		return;
-	}
+    if (
+      nextPage.children === null ||
+      nextPage.children === undefined ||
+      nextPage.children.length === 0
+    ) {
+      return;
+    }
 
     setHistory((history) => [...history, currentPage]);
 
@@ -20,9 +27,9 @@ function App() {
 
   const goBack = () => {
     const prevPage = history[history.length - 1];
-	if (prevPage === undefined) {
-		return;
-	}
+    if (prevPage === undefined) {
+      return;
+    }
 
     setHistory(history.slice(0, history.length - 1));
     changeState(prevPage);
@@ -31,11 +38,13 @@ function App() {
 
   return (
     <div className="App">
+	<FullScreen>
       <ButtonPage
         children={currentPage.children}
         changePage={changePage}
         goBack={goBack}
       />
+	  </FullScreen>
     </div>
   );
 }

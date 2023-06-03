@@ -46,10 +46,16 @@
   align-items: center;
   border: 2px solid white;
   border-radius: 20px;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+
 }
 
 /* .Button:focus {
-  background: blue;
+  background: #1663e4;
+  transition-delay: 1s;
+  transition-property: background;
 } */
 
 @keyframes App-logo-spin {

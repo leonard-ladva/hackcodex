@@ -1,19 +1,35 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useDoubleClick from "use-double-click";
 import Say from "react-say";
 
-// const myButton = new ButtonData("Task", "", nextPage(this));
 const Button = ({ buttonData, changePage, goBack }) => {
   const buttonRef = useRef();
+  const [isLongPress, setIsLongPress] = useState(false);
+  let longPressTimer;
+
+  const handleMouseDown = () => {
+    longPressTimer = setTimeout(() => {
+      setIsLongPress(true);
+      console.log("Long pressed!");
+    }, 500); // Adjust the delay as needed
+  };
+
+  const handleMouseUp = () => {
+    clearTimeout(longPressTimer);
+    if (isLongPress) {
+      setIsLongPress(false);
+      return;
+    }
+
+    if (buttonData.action) {
+      buttonData.action();
+      console.log(buttonData.name);
+    } else {
+      changePage(buttonData);
+    }
+  };
 
   useDoubleClick({
-    onSingleClick: (e) => {
-      if (buttonData.action) {
-        buttonData.action();
-        return;
-      }
-      changePage(buttonData);
-    },
     onDoubleClick: (e) => {
       goBack();
     },
@@ -21,19 +37,19 @@ const Button = ({ buttonData, changePage, goBack }) => {
     latency: 250,
   });
 
-  
-
   return (
-    <div ref={buttonRef} className="Button" >
+    <div
+      ref={buttonRef}
+      className="Button"
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+    >
       {buttonData.name}
-      {(
+      {isLongPress && (
         <Say pitch={0.3} rate={1.5} volume={0.8} text={buttonData.name} />
       )}
     </div>
   );
 };
-
-// function nextPage(buttonData){
-// }
 
 export default Button;

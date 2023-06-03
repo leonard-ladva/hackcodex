@@ -1,6 +1,6 @@
 import Button from "../button/Button";
 
-function ButtonPage({children, changePage, goBack}) {
+function ButtonPage({children, changePage, goBack,history}) {
 	
 	return (
 		<div className="ButtonPage">
@@ -10,6 +10,7 @@ function ButtonPage({children, changePage, goBack}) {
 					buttonData={buttonData}
 					changePage={changePage}
 					goBack={goBack}
+					history={history}
 				/>
 			))}
 		</div>

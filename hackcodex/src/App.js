@@ -43,6 +43,7 @@ function App() {
         children={currentPage.children}
         changePage={changePage}
         goBack={goBack}
+        history={history}
       />
 	  </FullScreen>
     </div>

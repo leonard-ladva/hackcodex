@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import useDoubleClick from "use-double-click";
 import Say from "react-say";
 

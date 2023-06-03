@@ -1,4 +1,3 @@
-import { FullScreen } from "@chiragrupani/fullscreen-react";
 import "./App.css";
 import ButtonPage from "./components/buttonPage/buttonPage";
 import HomePage from "./data";
@@ -38,14 +37,12 @@ function App() {
 
   return (
     <div className="App">
-	<FullScreen>
       <ButtonPage
         children={currentPage.children}
         changePage={changePage}
         goBack={goBack}
         history={history}
       />
-	  </FullScreen>
     </div>
   );
 }

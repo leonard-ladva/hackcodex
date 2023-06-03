@@ -1,9 +1,10 @@
-import { useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import useDoubleClick from "use-double-click";
 import Say from "react-say";
 
-const Button = ({ buttonData, changePage, goBack }) => {
+const Button = ({ buttonData, changePage, goBack, history }) => {
   const buttonRef = useRef();
+
   const [isLongPress, setIsLongPress] = useState(false);
   let longPressTimer;
 
@@ -14,28 +15,33 @@ const Button = ({ buttonData, changePage, goBack }) => {
     }, 500); // Adjust the delay as needed
   };
 
-  const handleMouseUp = () => {
-    clearTimeout(longPressTimer);
-    if (isLongPress) {
-      setIsLongPress(false);
-      return;
-    }
-
-    if (buttonData.action) {
-      buttonData.action();
-      console.log(buttonData.name);
-    } else {
-      changePage(buttonData);
-    }
-  };
-
   useDoubleClick({
+    onSingleClick: (e) => {
+      if (buttonData.action) {
+        buttonData.action();
+        console.log(buttonData.name);
+        return;
+      }
+      !isLongPress && changePage(buttonData);
+    },
     onDoubleClick: (e) => {
       goBack();
     },
     ref: buttonRef,
     latency: 250,
   });
+
+ 
+  const handleMouseUp = () => {
+    clearTimeout(longPressTimer);
+    if (isLongPress) {
+      setIsLongPress(false);
+      return;
+    }
+    return
+  };
+
+  
 
   return (
     <div

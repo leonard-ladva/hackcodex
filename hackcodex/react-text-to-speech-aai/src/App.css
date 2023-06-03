@@ -28,41 +28,11 @@
   color: #61dafb;
 }
 
-.ButtonPage {
-  display: flex;
-  flex-direction: row;
-  height: 100vh;
-}
-
-.Button {
-  background: #222;
-  color: white;
-  font-weight: 600;
-  font-size: xx-large;
-  flex-grow: 1;
-  flex-basis: 33.33%; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 2px solid white;
-  border-radius: 20px;
-}
-
-/* .Button:focus {
-  background: blue;
-} */
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .ButtonPage {
-    flex-direction: column;
   }
 }

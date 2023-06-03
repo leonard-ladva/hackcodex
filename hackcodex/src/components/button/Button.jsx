@@ -5,12 +5,11 @@ import useDoubleClick from "use-double-click";
 
 // const myButton = new ButtonData("Task", "", nextPage(this));
 
-function Button({ buttonData, changePage }) {
+function Button({ buttonData, changePage, goBack }) {
   const buttonRef = useRef();
 
   useDoubleClick({
     onSingleClick: (e) => {
-      console.log(e, "single click");
       if (buttonData.action) {
         buttonData.action();
 		return;
@@ -18,7 +17,8 @@ function Button({ buttonData, changePage }) {
         changePage(buttonData);
     },
     onDoubleClick: (e) => {
-      console.log(e, "double click");
+    //   console.log(e, "double click");
+	  goBack();
     },
     ref: buttonRef,
     latency: 250,

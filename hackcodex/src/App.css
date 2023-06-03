@@ -52,11 +52,11 @@
 
 }
 
-/* .Button:focus {
+.Button:focus {
   background: #1663e4;
   transition-delay: 1s;
   transition-property: background;
-} */
+}
 
 @keyframes App-logo-spin {
   from {

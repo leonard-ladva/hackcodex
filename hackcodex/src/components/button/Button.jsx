@@ -1,6 +1,4 @@
-// import ButtonData from "./button-data";
-
-import { useRef, useEffect,useCallback } from "react";
+import { useRef } from "react";
 import useDoubleClick from "use-double-click";
 import Say from "react-say";
 
@@ -23,21 +21,10 @@ const Button = ({ buttonData, changePage, goBack }) => {
     latency: 250,
   });
 
-  // const selector = useCallback(voices => [...voices].find(v => v.lang === 'zh-HK'), []);
-  useEffect(() => {
-    <Say
-      pitch={1.1}
-      rate={1.5}
-      speak="A quick brown fox jumped over the lazy dogs."
-      volume={0.8}
-      // voice={ selector }
-    />;
-    
-  },[]);
-
   return (
     <div ref={buttonRef} className="Button">
       {buttonData.name}
+      <Say pitch={1.1} rate={1.5} volume={0.8} text={buttonData.name}/>
     </div>
   );
 };
